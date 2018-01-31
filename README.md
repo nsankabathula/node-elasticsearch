@@ -11,7 +11,7 @@ Before using the app please make sure to elasticsearch is running.
 By default the app connects to elasticsearch running on localhost@9200. You can change the details in the (node-elasticsearch/app/config/esconnection.json) before you start.
 
 
-### Standard usage: node ./app/start.js --script=<> --index=name --type=type --filePath=jsonFilePath
+### Standard usage: node ./app/start.js --script=script-name --index=name --type=type --filePath=jsonFilePath
   
   1. ping: node ./app/start.js --script=ping
   2. info: node ./app/start.js --script=info
