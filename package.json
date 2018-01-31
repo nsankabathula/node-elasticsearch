@@ -1,0 +1,20 @@
+{
+  "name": "node-elasticsearch",
+  "version": "1.0.0",
+  "description": "node elasticsearch javascript",
+  "main": "start.js",
+  "scripts": {
+    "start": "node ./app/start.js"
+  },
+  "keywords": [
+    "node",
+    "elasticsearch",
+    "javascript"
+  ],
+  "author": "Naveen Sankabathula",
+  "license": "ISC",
+  "devDependencies": {
+    "elasticsearch": "^14.0.0",
+    "yargs": "^11.0.0"
+  }
+}
