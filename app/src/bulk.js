@@ -1,4 +1,5 @@
 const fs = require('fs');
+const LOG_PATH = 'app/log/';
 var bulk_data = [];
 
 var prepDataForBulk = function (list, esindex, estype, callback){
@@ -13,7 +14,7 @@ var prepDataForBulk = function (list, esindex, estype, callback){
 
 var importData = function (esconnection, data, index, type, callback){
     esconnection.bulk({
-        maxRetries: 5,
+        maxRetries: 1,
         index: index,
         type: type,
         body: data
@@ -22,7 +23,7 @@ var importData = function (esconnection, data, index, type, callback){
             console.log(err);
           }
           else {
-            callback(resp.items);
+            callback(resp);
           }
       })
 }
@@ -39,7 +40,9 @@ var bulk = function (esconnection, args, callback){
             
             prepDataForBulk(data,index, type, function(bulkdata){
                 importData(esconnection, bulkdata, index, type, function(response){
-                    console.log('Response', response);
+                    //console.log('Response', response);                    
+                    fs.writeFileSync(LOG_PATH + Date.now()+ '.json', JSON.stringify(response));                    
+                    
                 })
             });        
         }
