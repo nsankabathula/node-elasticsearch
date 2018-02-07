@@ -18,6 +18,14 @@ By default the app connects to elasticsearch running on localhost@9200. You can 
   3. index-info: node ./app/start.js --script=index-info
   4. create-index: node ./app/start.js --script=create-index --index=index-name
   5. delete-index: node ./app/start.js --script=delete-index --index=index-name
-  6. bulk: node ./app/start.js --script=bulk --index=index-name --type=type --filePath=jsonFilePath
+  6. bulk: node --max-old-space-size=4096 ./app/start.js --script=bulk --index=index-name --type=type --filePath=jsonFilePath
+
+
+#### More Info
+    
+  node ./app/start.js --script=index-info  > ./app/data/index-info.log
+  node ./app/start.js --script=delete-index --index=constituencies > ./app/data/delete-index.log
+
+  node --max-old-space-size=1024 ./app/start.js --script=bulk-stream --index=constituencies --type=doc --filePath=./app/data/constituencies.json > ./app/data/constituencies.log
   
   
