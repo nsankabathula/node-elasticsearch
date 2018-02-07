@@ -19,14 +19,27 @@ var bulk_stream = function (esconnection, args, callback) {
                 index: index,
                 type: type,
                 body: body
-            }, callback);
+            }, function (err, resp, status) {
+                if (err) {
+                    console.log(err);
+                }
+                else {
+
+                    if (callback) {
+                        console.log('calling callback with response');
+                        callback(err, resp);
+                    }
+                }
+            });
         };
 
         var done = function (err, res) {
             if (err) {
                 console.error(err);
             }
-            console.log(res);
+            if (res) {
+                console.info(res);
+            }
             console.log('go get a drink you deserve it');
         };
 
@@ -38,9 +51,8 @@ var bulk_stream = function (esconnection, args, callback) {
         rs.pipe(parse())
             .pipe(estream.mapSync(function (element) {
                 var a = [];
-                if (element.type === 'object') {// && Object.typeof(element.value)
+                if (element.type === 'object') {
                     a = element.value;
-                    //console.log('a', a);
                     return a;
                 }
             }))

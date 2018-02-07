@@ -1,13 +1,11 @@
 {
-    "host":
-    [
+    "host": [
         {
-        "host": "localhost",
-        "auth":"elastic:s0P^P@3R^-JhjOH%?BcI",
-        "protocol":"http",
-        "port" : 9200
+            "host": "localhost",
+            "auth": "elastic:s0P^P@3R^-JhjOH%?BcI",
+            "protocol": "http",
+            "port": 9200
         }
     ],
-    "log":"trace" 
-    
+    "log": "error"
 }
