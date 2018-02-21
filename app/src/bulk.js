@@ -4,6 +4,7 @@ var bulk_data = [];
 
 var prepDataForBulk = function (list, esindex, estype, callback) {
     list.forEach((element, index) => {
+        //element['timestamp'] = Date.now();
         bulk_data.push(
             { index: { _index: esindex, _type: estype, _id: index } },
             element
