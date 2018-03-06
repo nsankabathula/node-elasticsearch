@@ -53,6 +53,7 @@ var bulk_stream = function (esconnection, args, callback) {
                 var a = [];
                 if (element.type === 'object') {
                     a = element.value;
+                    a['crew'] = JSON.parse(a['crew'])
                     return a;
                 }
             }))

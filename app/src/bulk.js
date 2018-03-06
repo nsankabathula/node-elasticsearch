@@ -2,9 +2,10 @@ const fs = require('fs');
 const LOG_PATH = 'app/log/';
 var bulk_data = [];
 
-var prepDataForBulk = function (list, esindex, estype, callback) {
+var prepDataForBulk = function (list, esindex, estype, callback, customize) {
     list.forEach((element, index) => {
         //element['timestamp'] = Date.now();
+        element, index = (customize) ? customize(element, index) : element, index
         bulk_data.push(
             { index: { _index: esindex, _type: estype, _id: index } },
             element
@@ -15,6 +16,7 @@ var prepDataForBulk = function (list, esindex, estype, callback) {
 
 
 var importData = function (esconnection, data, index, type, callback) {
+    //data['crew'] = JSON.parse(data['crew'])
     esconnection.bulk({
         maxRetries: 1,
         index: index,
@@ -43,7 +45,12 @@ var bulk = function (esconnection, args, callback) {
                 fs.writeFileSync(LOG_PATH + Date.now() + '.json', JSON.stringify(response));
 
             })
-        });
+        },
+            function (element, index) {
+                element['crew'] = JSON.parse(element['crew'])
+                return element, element['tconst']
+            }
+        );
     }
     else {
         console.error('Args empty/incomplete...', args);
