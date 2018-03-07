@@ -1,6 +1,3 @@
-PUT imdb {}
-
-PUT imdb/_mapping/title
 {
     "properties": {
         "averageRating": {
