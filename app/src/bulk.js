@@ -46,10 +46,7 @@ var bulk = function (esconnection, args, callback) {
 
             })
         },
-            function (element, index) {
-                element['crew'] = JSON.parse(element['crew'])
-                return element, element['tconst']
-            }
+            null
         );
     }
     else {
