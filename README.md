@@ -29,5 +29,4 @@ By default the app connects to elasticsearch running on localhost@9200. You can 
   node --max-old-space-size=1024 ./app/start.js --script=bulk-stream --index=constituencies --type=doc --filePath=./app/data/constituencies.json > ./app/data/constituencies.log
 
   node --max-old-space-size=4096 ./app/start.js --script=bulk-stream --index=imdb --type=titles --filePath=C:/Users/nsankabathula/PycharmProjects/imdb-chatbot/src/python/data/merged.title.crew.json
-  
-  C:/Users/nsankabathula/PycharmProjects/imdb-chatbot/src/python/data/merged.title.crew.json
+
