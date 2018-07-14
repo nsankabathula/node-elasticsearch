@@ -2,10 +2,8 @@
     "host": [
         {
             "host": "localhost",
-            "auth": "elastic:s0P^P@3R^-JhjOH%?BcI",
-            "protocol": "http",
-            "port": 9200
+            "port": 9229
         }
     ],
-    "log": "error"
+    "log": "trace"
 }

@@ -24,7 +24,8 @@ var importData = function (esconnection, data, index, type, callback) {
         body: data
     }, function (err, resp, status) {
         if (err) {
-            console.log(err);
+            //console.log(err);
+		fs.writeFileSync(LOG_PATH + Date.now() + '.err.json', err);
         }
         else {
             callback(resp);
@@ -47,7 +48,7 @@ var bulk = function (esconnection, args, callback) {
             })
         },
             function (element, index) {
-                element['crew'] = JSON.parse(element['crew'])
+                //element['crew'] = JSON.parse(element['crew'])
                 return element, element['tconst']
             }
         );
